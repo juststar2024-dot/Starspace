@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eeeaff">
+  <title>STARSPACE — твоё пространство</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true">✦　·　✧　　·　✦　　✧　·　✦</div>
+
+  <main class="app">
+    <header class="topbar">
+      <a class="logo" href="#">✦ STARSPACE</a>
+      <span class="date-label" id="todayLabel"></span>
+    </header>
+
+    <section class="welcome panel">
+      <div>
+        <p class="eyebrow">ТВОЁ МАЛЕНЬКОЕ ВСЕЛЕННОЕ</p>
+        <h1>Привет, звёздочка! ✨</h1>
+        <p>Не обязательно делать всё сразу. Каждый маленький шаг важен.</p>
+      </div>
+      <div class="welcome-star">✦</div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card lilac">
+        <span>📋</span>
+        <p>Задачи на сегодня</p>
+        <strong id="taskStat">0 / 0</strong>
+      </article>
+      <article class="stat-card blue">
+        <span>⭐</span>
+        <p>Опыт</p>
+        <strong id="xpStat">0 XP</strong>
+      </article>
+      <article class="stat-card pink">
+        <span>🪙</span>
+        <p>В копилках</p>
+        <strong id="savingsStat">0 ₽</strong>
+      </article>
+    </section>
+
+    <section class="panel section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">МАЛЕНЬКИЕ ШАГИ</p>
+          <h2>Задачи на сегодня ☁️</h2>
+        </div>
+      </div>
+
+      <form id="taskForm" class="add-form">
+        <input id="taskInput" type="text" placeholder="Что нужно сделать?" maxlength="180" required>
+        <button type="submit">Добавить +</button>
+      </form>
+
+      <div class="task-tabs">
+        <button type="button" class="tab active" data-task-filter="all">Все</button>
+        <button type="button" class="tab" data-task-filter="daily">Ежедневные</button>
+        <button type="button" class="tab" data-task-filter="once">Обычные</button>
+      </div>
+
+      <div id="missedNotice" class="notice hidden"></div>
+      <div id="taskList" class="task-list"></div>
+      <p id="emptyTasks" class="empty-state">Здесь пока пусто. Добавим первую задачу? 🌱</p>
+    </section>
+
+    <section class="panel section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">БОЛЬШИЕ МЕЧТЫ</p>
+          <h2>Мои проекты 🌙</h2>
+          <p class="section-description">Разбивай большие дела на небольшие шаги.</p>
+        </div>
+      </div>
+
+      <form id="projectForm" class="add-form">
+        <input id="projectInput" type="text" placeholder="Например, Новогодний ивент" maxlength="180" required>
+        <button type="submit">Создать +</button>
+      </form>
+      <div id="projectList" class="project-list"></div>
+      <p id="emptyProjects" class="empty-state">Твои большие идеи появятся здесь ✨</p>
+    </section>
+
+    <section class="panel section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">КОПИМ НА МЕЧТУ</p>
+          <h2>Мои копилки 🪙</h2>
+        </div>
+      </div>
+
+      <form id="savingsForm" class="add-form">
+        <input id="savingsName" type="text" placeholder="На что копим?" maxlength="100" required>
+        <input id="savingsGoal" type="number" placeholder="Цель, ₽" min="1" step="1" required>
+        <button type="submit">Создать +</button>
+      </form>
+      <div id="savingsList" class="savings-grid"></div>
+      <p id="emptySavings" class="empty-state">Здесь будут копилки на твои мечты 💜</p>
+    </section>
+
+    <footer>Сделано с заботой о твоих мечтах ✦ STARSPACE</footer>
+  </main>
+
+  <dialog id="subtaskDialog" class="dialog">
+    <form id="subtaskForm">
+      <h3>Добавить подзадачу ✨</h3>
+      <p id="subtaskParentLabel" class="section-description"></p>
+      <input id="subtaskInput" type="text" maxlength="180" placeholder="Название шага" required>
+      <div class="dialog-actions">
+        <button type="button" class="secondary" id="cancelSubtask">Отмена</button>
+        <button type="submit">Добавить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="moneyDialog" class="dialog">
+    <form id="moneyForm">
+      <h3 id="moneyTitle">Копилка</h3>
+      <p id="moneyDescription" class="section-description"></p>
+      <input id="moneyAmount" type="number" min="1" step="1" placeholder="Сумма, ₽" required>
+      <div class="dialog-actions">
+        <button type="button" class="secondary" id="cancelMoney">Отмена</button>
+        <button type="submit" id="moneySubmit">Подтвердить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
